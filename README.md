@@ -35,7 +35,7 @@ You will need to set your `fs/conf3.json` configuration as such:
 ```json
 {
   "mqtt": {
-    "ssl_ca_cert": "ca.pem"
+    "ssl_ca_cert": "ca.pem",
     "ssl_cert": "cert.pem",
     "ssl_key": "key.pem"
   }
