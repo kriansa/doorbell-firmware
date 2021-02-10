@@ -1,0 +1,49 @@
+---
+manifest_version: 2017-05-18
+author: Kriansa <daniel at garajau.com.br>
+description: My doorbell
+version: 1.0
+
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+# Optional. List of tags for online search.
+tags:
+  - c
+
+# List of files / directories with C sources. No slashes at the end of dir names.
+sources:
+  - src
+
+# List of dirs. Files from these dirs will be copied to the device filesystem
+filesystem:
+  - fs
+
+# Additional make flags (ESP-01/sonoff devices has only 1M and aren't
+# compatible with OTA)
+build_vars:
+  BOARD: esp8266-1M
+  FLASH_SIZE: 1048576
+
+# Custom configuration entries, settable via "device configuration"
+config_schema:
+  # Custom settings
+  - ["app", "o", { title: "My app custom settings" }]
+  - ["app.console", "b", true, { title: "Enable logging to console (UART)" }]
+  - ["app.relay_time", "i", 500, { title: "How long we keep the relay activated (in ms)" }]
+
+  - ["app.mqtt", "o", { title: "MQTT object" }]
+  - ["app.mqtt.button_topic", "s", "btn-press", { title: "Topic to send keypresses from GPIO Button input (prepended by devices/<device_id>)" }]
+  - ["app.mqtt.relay_topic", "s", "cmd-relay", { title: "Topic to subscribe to and power the GPIO Relay output (prepended by devices/<device_id>)" }]
+
+# List of libraries used by this app, in order of initialisation
+libs:
+  - origin: https://github.com/mongoose-os-libs/boards
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-mqtt
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/mqtt

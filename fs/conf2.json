@@ -1,0 +1,18 @@
+{
+  "device": {
+    "id": "mydevice_id"
+  },
+  "mqtt": {
+    "server": "your-mqtt-server:port"
+  },
+  "wifi": {
+    "sta": {
+      "ssid": "your-wifi-ssid",
+      "pass": "your-wifi-password"
+    }
+  },
+  "debug": {
+    "stderr_topic": "mydevice_id/log",
+    "stdout_topic": "mydevice_id/log"
+  }
+}

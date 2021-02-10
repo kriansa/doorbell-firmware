@@ -1,0 +1,13 @@
+{
+  "mqtt": {
+    "enable": true
+  },
+  "wifi": {
+    "ap": {
+      "enable": false
+    },
+    "sta": {
+      "enable": true
+    }
+  }
+}
